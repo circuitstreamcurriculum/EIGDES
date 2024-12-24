@@ -1,9 +1,18 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setVelocity(0, -150)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    game.gameOver(false)
+    game.setGameOverMessage(false, "GAME OVER!")
 })
-let mySprite: Sprite = null
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Char.vy == 0) {
+        Char.setVelocity(0, -150)
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    game.gameOver(true)
+})
+let Char: Sprite = null
 scene.setBackgroundColor(9)
-mySprite = sprites.create(img`
+Char = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -22,7 +31,7 @@ mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level0`)
-mySprite.setPosition(6, 230)
-mySprite.ay = 350
-controller.moveSprite(mySprite, 100, 0)
-scene.cameraFollowSprite(mySprite)
+Char.setPosition(6, 233)
+Char.ay = 500
+controller.moveSprite(Char, 100, 0)
+scene.cameraFollowSprite(Char)
