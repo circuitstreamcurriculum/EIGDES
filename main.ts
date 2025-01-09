@@ -1,6 +1,5 @@
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     game.gameOver(false)
-    game.setGameOverMessage(false, "GAME OVER!")
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Char.vy == 0) {
@@ -31,7 +30,7 @@ Char = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level0`)
-Char.setPosition(6, 233)
+Char.setPosition(10, 230)
 Char.ay = 500
 controller.moveSprite(Char, 100, 0)
 scene.cameraFollowSprite(Char)

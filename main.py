@@ -10,6 +10,15 @@ scene.on_overlap_tile(SpriteKind.player,
 def on_a_pressed():
     if Char.vy == 0:
         Char.set_velocity(0, -150)
+        music.play(music.create_sound_effect(WaveShape.NOISE,
+                5000,
+                0,
+                255,
+                0,
+                1000,
+                SoundExpressionEffect.NONE,
+                InterpolationCurve.LINEAR),
+            music.PlaybackMode.IN_BACKGROUND)
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def on_overlap_tile2(sprite2, location2):
@@ -42,7 +51,7 @@ Char = sprites.create(img("""
 tiles.set_current_tilemap(tilemap("""
     level0
 """))
-Char.set_position(6, 233)
+Char.set_position(10, 230)
 Char.ay = 500
 controller.move_sprite(Char, 100, 0)
 scene.camera_follow_sprite(Char)
